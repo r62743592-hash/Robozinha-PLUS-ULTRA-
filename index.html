@@ -1,0 +1,129 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RoboZinha AI 💚</title>
+<style>
+*{box-sizing:border-box}
+body{
+ margin:0;background:#07110c;color:white;
+ font-family:Arial,sans-serif;
+}
+header{
+ padding:22px;text-align:center;
+ background:#0c1c12;border-bottom:1px solid #20e879;
+}
+.robot{font-size:65px}
+h1{color:#39ff88;margin:8px}
+header p{color:#a6cbb4}
+main{padding:16px;max-width:600px;margin:auto}
+.card{
+ background:#102018;border:1px solid #205c39;
+ border-radius:18px;padding:16px;margin-bottom:15px;
+}
+h2{color:#45ff91;font-size:19px}
+button{
+ background:#20dc72;color:#041009;
+ border:0;border-radius:12px;padding:13px;
+ font-weight:bold;cursor:pointer;
+}
+input,textarea{
+ width:100%;padding:13px;margin:8px 0;
+ border-radius:10px;border:1px solid #286340;
+ background:#07110c;color:white;
+}
+#messages{
+ min-height:100px;max-height:260px;
+ overflow:auto;background:#07110c;
+ border-radius:12px;padding:10px;
+}
+.msg{padding:9px;margin:7px 0;border-radius:10px}
+.user{background:#164c2c}
+.bot{background:#183325}
+#preview{max-width:100%;border-radius:12px;margin-top:10px}
+footer{text-align:center;color:#8eb59b;padding:20px}
+</style>
+</head>
+<body>
+<header>
+ <div class="robot">🤖💚</div>
+ <h1>RoboZinha AI</h1>
+ <p>Sua companheira inteligente!</p>
+</header>
+
+<main>
+ <section class="card">
+  <h2>💚 Olá! Eu sou a RoboZinha!</h2>
+  <p>Bem-vindo ao meu cantinho. Vamos criar coisas incríveis?</p>
+  <p>✨ Chat • 🖼️ Imagens • 💎 Gemas</p>
+ </section>
+
+ <section class="card">
+  <h2>💬 Conversar</h2>
+  <div id="messages">
+   <div class="msg bot">Oii! 💚 Ainda precisamos conectar minha inteligência artificial!</div>
+  </div>
+  <input id="message" placeholder="Escreva sua mensagem...">
+  <button onclick="sendMessage()">Enviar mensagem</button>
+ </section>
+
+ <section class="card">
+  <h2>🖼️ Enviar uma imagem</h2>
+  <input type="file" id="photo" accept="image/*">
+  <img id="preview" hidden>
+  <p id="photoStatus">Escolha uma imagem do seu celular.</p>
+  <p>A análise por IA será conectada na próxima etapa.</p>
+ </section>
+
+ <section class="card">
+  <h2>🎨 Criar imagem</h2>
+  <textarea id="prompt" placeholder="Descreva a imagem que deseja criar..."></textarea>
+  <button onclick="createImage()">Criar imagem</button>
+  <p id="imageStatus"></p>
+ </section>
+
+ <section class="card">
+  <h2>💎 Minha conta</h2>
+  <p>Plano: Gratuito</p>
+  <p>Créditos: 20 (prévia)</p>
+  <p>Gemas: 0 (prévia)</p>
+  <p>O sistema real de créditos será conectado depois.</p>
+ </section>
+</main>
+
+<footer>Feito com 💚 pela equipe RoboZinha AI</footer>
+
+<script>
+function sendMessage(){
+ const field=document.getElementById("message");
+ const box=document.getElementById("messages");
+ if(!field.value.trim())return;
+ const msg=document.createElement("div");
+ msg.className="msg user";
+ msg.textContent=field.value;
+ box.appendChild(msg);
+ const notice=document.createElement("div");
+ notice.className="msg bot";
+ notice.textContent="Sua mensagem foi exibida! Ainda falta conectar a IA para eu responder de verdade. 💚";
+ box.appendChild(notice);
+ field.value="";
+ box.scrollTop=box.scrollHeight;
+}
+document.getElementById("photo").addEventListener("change",function(){
+ const file=this.files[0];
+ if(!file)return;
+ const preview=document.getElementById("preview");
+ preview.src=URL.createObjectURL(file);
+ preview.hidden=false;
+ document.getElementById("photoStatus").textContent="Imagem selecionada! A análise por IA ainda será conectada. 💚";
+});
+function createImage(){
+ document.getElementById("imageStatus").textContent=
+ "Seu pedido foi escrito! Falta conectar o serviço de geração de imagens. 💚";
+}
+</script>
+</body>
+  </html>
+  
